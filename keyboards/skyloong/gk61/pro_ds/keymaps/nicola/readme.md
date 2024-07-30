@@ -7,7 +7,7 @@
 * 右親指キー : 単押し → Spaceキー 、長押し → F15(変換キー)
 
 ## 配列
-![Layout](assets/gk61_pro_ds_nicola_layout.png "Layout")
+![](gk61_pro_ds_nicola_layout.png)
 
 ※右下の修飾キーはFNキーで有効になります。通常はカーソル移動に使用します。
 
@@ -24,20 +24,6 @@ Windowsのアプリ毎のIME状態がキーボードに反映されるので、�
 ## 制限事項
 * Nicolaモードのとき、キーのリピートは効きません。
 * SHIFTキーを押しながらの英字入力はできません。
-
-## observe_imeとMS-IMEの設定
-
-アダプターを使用する場合、observe_imeを利用すると所謂モードずれがないので便利です。GK61 proは10キーがないのでNumLockでモード切替えをします。
-
-![](assets/observe_ime_num.png)
-
-USキーボードは無変換・変換キーがないのでF14/F15を使用します。以下はMS-IMEの設定例です(以前のバージョンを使用)。カナ変換はF7キーで出来ます。
-
-![](assets/ms_ime.png)
-
-変換時の色はATOKのほうがJapanist/OAKに近い雰囲気になります。
-
-![](assets/color.png)
 
 ## 情報元
 * https://note.com/ja7rhk/n/nc8d635735f15 noteの解説記事。 
