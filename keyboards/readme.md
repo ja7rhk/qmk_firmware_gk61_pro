@@ -1,3 +1,9 @@
+## This repository is a preliminary attempt to implement the Nicola Japanese input method on [GK61 Pro](https://skyloongtech.com/skyloong-gk61pro/ref/13/) and [GK61 (QMK&VIA)](https://skyloongtech.com/skyloong-gk61-qmkvia/ref/13/).
+### please refer to -> keyboards/skyloong/gk61/pro_48/keymaps/nicola
+* [keyboards/skyloong/gk61/pro_48/keymaps/nicola/readme.md](https://github.com/ja7rhk/qmk_firmware/tree/master/keyboards/skyloong/gk61/pro_48/keymaps/nicola/readme.md)
+### please refer to -> keyboards/skyloong/gk61/pro_ds/keymaps/nicola
+* [keyboards/skyloong/gk61/pro_ds/keymaps/nicola/readme.md](https://github.com/ja7rhk/qmk_firmware/tree/master/keyboards/skyloong/gk61/pro_ds/keymaps/nicola/readme.md)
+
 # Included Keyboards
 
 QMK runs on a diverse range of keyboards. Some of these keyboards are well maintained and see constant community contributions, while others are part of the repository for historical reasons.

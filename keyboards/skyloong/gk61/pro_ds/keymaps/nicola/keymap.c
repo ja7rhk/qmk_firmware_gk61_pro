@@ -141,7 +141,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             break;
         case _NICOLA:
             RGB_MATRIX_INDICATOR_SET_COLOR(OYA_LEFT_INDEX, 255, 255, 0); // nicola : on
-            RGB_MATRIX_INDICATOR_SET_COLOR(OYA_CENTER_INDEX, 127, 127, 0); // nicola : on
+            //RGB_MATRIX_INDICATOR_SET_COLOR(OYA_CENTER_INDEX, 255, 255, 0); // nicola : on
             RGB_MATRIX_INDICATOR_SET_COLOR(OYA_RIGHT_INDEX, 255, 255, 0); // nicola : on
             break;
         case _FUNC:
