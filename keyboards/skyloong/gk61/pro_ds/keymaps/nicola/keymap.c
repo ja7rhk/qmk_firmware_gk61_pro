@@ -94,7 +94,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 //send_string(SS_TAP(X_LNG2));
                 send_string(SS_LSFT(SS_TAP(X_CAPS_LOCK)));
-            #ifdef USE_OBSERVE_IME
+            #ifndef USE_OBSERVE_IME
                 nicola_off();
             #endif
             }
@@ -103,7 +103,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_F14:
             if (record->event.pressed) {
                 send_string(SS_TAP(X_F14));
-            #ifdef USE_OBSERVE_IME
+            #ifndef USE_OBSERVE_IME
                 nicola_on();
             #endif
             }
@@ -138,10 +138,11 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
             RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LOCK_INDEX, 255, 255, 0); // nicola : off
+            RGB_MATRIX_INDICATOR_SET_COLOR(OYA_CENTER_INDEX, 0, 63, 0); // nicola : on
             break;
         case _NICOLA:
             RGB_MATRIX_INDICATOR_SET_COLOR(OYA_LEFT_INDEX, 255, 255, 0); // nicola : on
-            //RGB_MATRIX_INDICATOR_SET_COLOR(OYA_CENTER_INDEX, 255, 255, 0); // nicola : on
+            RGB_MATRIX_INDICATOR_SET_COLOR(OYA_CENTER_INDEX, 127, 127, 0); // nicola : on
             RGB_MATRIX_INDICATOR_SET_COLOR(OYA_RIGHT_INDEX, 255, 255, 0); // nicola : on
             break;
         case _FUNC:
