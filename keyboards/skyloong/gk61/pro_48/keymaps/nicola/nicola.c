@@ -333,6 +333,7 @@ bool process_nicola(uint16_t keycode, keyrecord_t *record) {
   key_process_guard = 1; // timeout entrance guard
   bool cont_process = true;
   uint32_t curr_time = timer_read32();
+  uint32_t t1, t2;
 
   if (record->event.pressed) {
     if(NG_M_TOP <= keycode && keycode <= NG_M_BOTTOM) {
@@ -350,8 +351,8 @@ bool process_nicola(uint16_t keycode, keyrecord_t *record) {
             break;
           case NICOLA_STATE_S4_MO:
             // combo => three key judge【処理A】
-            uint32_t t1 = nicola_o_time - nicola_m_time;
-            uint32_t t2 = curr_time - nicola_o_time;
+            t1 = nicola_o_time - nicola_m_time;
+            t2 = curr_time - nicola_o_time;
             if(t1 >= t2) {
               // the leading M key is single, the O key in between is combo with current key
               nicola_m_type();
@@ -392,8 +393,8 @@ bool process_nicola(uint16_t keycode, keyrecord_t *record) {
             break;
           case NICOLA_STATE_S5_OM:
             // combo => three key judge【処理B】
-            uint32_t t1 = nicola_m_time - nicola_o_time;
-            uint32_t t2 = curr_time - nicola_m_time;
+            t1 = nicola_m_time - nicola_o_time;
+            t2 = curr_time - nicola_m_time;
             if(t1 >= t2) {
               // the leading O key is single, the M key in between is combo with current key
               nicola_o_type();
@@ -455,8 +456,8 @@ bool process_nicola(uint16_t keycode, keyrecord_t *record) {
             //【処理C】
             if(nicola_m_key == keycode) {
               // M ON --> O ON --> M OFF
-              uint16_t t1 = nicola_o_time - nicola_m_time;
-              uint16_t t2 = curr_time - nicola_o_time;
+              t1 = nicola_o_time - nicola_m_time;
+              t2 = curr_time - nicola_o_time;
               if(t1>=t2 && t2 < OVERLAP_THRESHOLD) {
                 // M ON --> O ON --> M OFF (M is output, but O is still open to combo)
                 nicola_m_type();
@@ -472,8 +473,8 @@ bool process_nicola(uint16_t keycode, keyrecord_t *record) {
             //【処理D】
             if(nicola_o_key == keycode) {
               // O ON --> M ON --> O OFF
-              uint16_t t1 = nicola_m_time - nicola_o_time;
-              uint16_t t2 = curr_time - nicola_m_time;
+              t1 = nicola_m_time - nicola_o_time;
+              t2 = curr_time - nicola_m_time;
               if(t1>=t2 && t2 < OVERLAP_THRESHOLD) {
                 // O ON --> M ON --> O OFF (O is output, but M is still open to combo)
                 nicola_o_type();
