@@ -195,7 +195,11 @@
                 {"matrix": [4, 13], "x": 13.75, "y": 4, "w": 1.25}
             ]
         },
+<<<<<<< HEAD:keyboards/skyloong/gk61/pro_ds/keyboard.json
         "LAYOUT_60_ansi": {
+=======
+        "LAYOUT_60_ansi_tsangan_split_bs_rshift": {
+>>>>>>> upstream/master:keyboards/xelus/dawn60/rev1_qmk/keyboard.json
             "layout": [
                 {"matrix": [0, 0], "x": 0, "y": 0, "w": 1},
                 {"matrix": [0, 1], "x": 1, "y": 0},

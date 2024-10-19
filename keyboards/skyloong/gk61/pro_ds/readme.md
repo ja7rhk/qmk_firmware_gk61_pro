@@ -1,6 +1,10 @@
 # GK61 PRO DS
 
+<<<<<<< HEAD:keyboards/skyloong/gk61/pro_ds/readme.md
 ![GK61 PRO DS](https://i.imgur.com/x7riwSeh.png)
+=======
+![DactylMinidox](https://i.imgur.com/PqjgeRf.jpeg)
+>>>>>>> upstream/master:keyboards/handwired/dactyl_minidox/readme.md
 
 ## The PCB features:
 * QMK & VIA compatibility
