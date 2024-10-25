@@ -12,11 +12,11 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 enum keymap_layers {
-  _QWERTY = 0,
+    _QWERTY = 0,
 // NICOLA親指シフト入力レイヤー
-  _NICOLA,
+    _NICOLA,
 // FUNCTION
-  _FUNC
+    _FUNC
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
