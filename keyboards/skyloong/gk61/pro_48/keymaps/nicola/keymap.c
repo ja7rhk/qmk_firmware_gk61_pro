@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NICOLA] = LAYOUT_all(
         KC_ESC,       NG_1,     NG_2,     NG_3,     NG_4,      NG_5,      NG_6,     NG_7,     NG_8,     NG_9,      NG_0,     NG_MINS,  NG_EQL,   KC_BSPC,
         KC_TAB,       NG_Q,     NG_W,     NG_E,     NG_R,      NG_T,      NG_Y,     NG_U,     NG_I,     NG_O,      NG_P,     NG_LBRC,  NG_RBRC,  NG_BSLS,
-        KC_CAPS_LOCK, NG_A,     NG_S,     NG_D,     NG_F,      NG_G,      NG_H,     NG_J,     NG_K,     NG_L,      NG_SCLN,  KC_BSPC,            KC_ENT,
+        KC_F16,       NG_A,     NG_S,     NG_D,     NG_F,      NG_G,      NG_H,     NG_J,     NG_K,     NG_L,      NG_SCLN,  KC_BSPC,            KC_ENT,
         KC_LSFT,      NG_Z,     NG_X,     NG_C,     NG_V,      NG_B,      NG_N,     NG_M,     NG_COMM,  NG_DOT,    NG_SLSH,            KC_UP,
         KC_LCTL,      KC_LGUI,  KC_LALT,            NG_SHFTL,  _______,   KC_ESC,             NG_SHFTR, MO(_FUNC), KC_LEFT,  KC_DOWN,            KC_RIGHT
     ),
@@ -70,6 +70,9 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif
 
+static bool is_numlock = false;     // NumLockがオンかオフか
+static bool is_capslock = false;    // CapsLockがオンかオフか
+
 void matrix_init_user(void) {
     // NICOLA親指シフト
     set_nicola(_NICOLA);
@@ -88,10 +91,14 @@ bool led_update_kb(led_t led_state) {
 
     bool res = led_update_user(led_state);
     if(res) {
-        if (led_state.num_lock)
-            nicola_on();
-        else
-            nicola_off();
+        if (led_state.num_lock != is_numlock) {
+            if (led_state.num_lock)
+                nicola_on();
+            else
+                nicola_off();
+            is_numlock = led_state.num_lock;
+        }
+        is_capslock = led_state.caps_lock;
     }
     return res;
 }
@@ -101,7 +108,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
         // 英数キー(Caps Lock)、nicola mode オフ
-        case KC_CAPS_LOCK:
+        //case KC_CAPS_LOCK:
+        case KC_F16:
             if (record->event.pressed) {
                 //send_string(SS_TAP(X_LNG2));
                 send_string(SS_LSFT(SS_TAP(X_CAPS_LOCK)));
@@ -148,7 +156,11 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
-            RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LOCK_INDEX, 255, 255, 0); // nicola : off
+            if (is_capslock) {
+                RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LOCK_INDEX, 255, 255, 255); // CapsLock : on
+            } else {
+                RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LOCK_INDEX, 255, 255, 0); // CapsLock : off
+            }
             break;
         case _NICOLA:
             RGB_MATRIX_INDICATOR_SET_COLOR(OYA_LEFT_INDEX, 255, 255, 0); // nicola : on
