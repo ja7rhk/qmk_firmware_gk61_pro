@@ -69,10 +69,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_FUNC] =   { ENCODER_CCW_CW(_______, _______) }
 };
 
-
-static bool is_numlock = false;     // NumLockがオンかオフか
-static bool is_capslock = false;    // CapsLockがオンかオフか
-
 void matrix_init_user(void) {
     // NICOLA親指シフト
     set_nicola(_NICOLA);
@@ -84,9 +80,12 @@ void keyboard_post_init_user(void) {
     nicola_off();
 }
 
+
+static bool is_capslock = false;    // CapsLockがオンかオフか
+#ifdef USE_OBSERVE_IME
+static bool is_numlock = false;     // NumLockがオンかオフか
 // This functions will be called when one of those 5 LEDs changes state.
 // Num Lock, Caps Lock, Scroll Lock, Compose, Kan
-#ifdef USE_OBSERVE_IME
 bool led_update_kb(led_t led_state) {
 
     bool res = led_update_user(led_state);
@@ -164,10 +163,11 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
             } else {
                 RGB_MATRIX_INDICATOR_SET_COLOR(CAPS_LOCK_INDEX, 255, 255, 0); // CapsLock : off
             }
+            RGB_MATRIX_INDICATOR_SET_COLOR(OYA_CENTER_INDEX, 0, 63, 0); // nicola : off
             break;
         case _NICOLA:
             RGB_MATRIX_INDICATOR_SET_COLOR(OYA_LEFT_INDEX, 255, 255, 0); // nicola : on
-            RGB_MATRIX_INDICATOR_SET_COLOR(OYA_CENTER_INDEX, 255, 255, 0); // nicola : on
+            RGB_MATRIX_INDICATOR_SET_COLOR(OYA_CENTER_INDEX, 127, 127, 0); // nicola : on
             RGB_MATRIX_INDICATOR_SET_COLOR(OYA_RIGHT_INDEX, 255, 255, 0); // nicola : on
             break;
         case _FUNC:
