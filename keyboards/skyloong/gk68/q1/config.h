@@ -11,4 +11,4 @@
 
 // IMEを監視する"observe_ime"を使用する場合、Num Lockでnicola on/offする。
 // キーボード単体でnicola on/offを制御する場合はコメントアウトする。
-//#define USE_OBSERVE_IME
+#define USE_OBSERVE_IME
