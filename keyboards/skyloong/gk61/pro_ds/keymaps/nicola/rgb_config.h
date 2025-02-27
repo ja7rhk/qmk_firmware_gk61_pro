@@ -3,6 +3,7 @@
 #define OYA_LEFT_INDEX 56
 #define OYA_CENTER_INDEX 57
 #define OYA_RIGHT_INDEX 58
+#define FN_ESC_INDEX 0       // ` : Escape
 #define FN_BS_INDEX 13       // BS : Delete
 #define FN_PS_INDEX 21       // U : PrintScreen
 #define FN_HOME_INDEX 36     // K : Home
